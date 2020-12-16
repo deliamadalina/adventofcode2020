@@ -39,20 +39,21 @@ func CoundTrees(data []string) (err error, trees int){
 
 	for _, line := range data{
 		count += 1
-		pozition = pozition + 3
+
 
 		val := strings.Split(line, "")
 
 		for len(val) <= pozition {
 			val = append(val, val...)
 		}
-		if val[pozition] == "#" {
+		if val[pozition-1] == "#" {
 			trees += 1
 		}
 
 		if total_lines != count {
 			fmt.Errorf("Failed to count all lines")
 		}
+		pozition = pozition + 3
 
 	}
 	return err, trees
